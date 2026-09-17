@@ -1,0 +1,64 @@
+body,
+html {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000000;
+    touch-action: none;
+}
+
+svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    cursor: pointer;
+    filter: drop-shadow(0 0 8px rgba(0, 251, 255, 0.6));
+}
+
+/* 1. Target the eyes/mouth highlights */
+#Cabeza path:first-child {
+    fill: #00fbff !important;
+    filter: drop-shadow(0 0 8px #00fbff);
+    /* Faster animation (0.1s) makes it look like flickering flame */
+    animation: cyanFire 0.1s infinite alternate;
+}
+
+/* 2. Fiery Cyan Flicker Animation */
+@keyframes cyanFire {
+    0% {
+        filter: drop-shadow(0 0 4px #0088ff) brightness(1.2);
+        transform: scale(1);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 15px #00fbff) brightness(2);
+        /* Slight scale jitter adds to the "fire" look */
+        transform: scale(1.05);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 6px #00fbff) brightness(1.5);
+        transform: scale(0.98);
+    }
+}
+
+/* Add a glowing neon outline to all body segments */
+#Aletas path,
+#Espina path {
+    stroke: #00fbff;
+    stroke-width: 0.5px;
+    /* Thin, sharp line */
+    stroke-opacity: 0.8;
+}
+
+/* Make the head outline match the fiery eyes */
+#Cabeza path:last-child {
+    stroke: #00fbff;
+    stroke-width: 1px;
+    fill: #000000 !important;
+    /* Keep the skull black so the eyes pop */
+}
